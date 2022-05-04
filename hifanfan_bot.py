@@ -59,6 +59,7 @@ def reply():
             tweet = dict(tweet)
             tweet_id = tweet["id"]
 
+            client.like(tweet_id=tweet_id)
             client.create_tweet(text= "hi fanfan", in_reply_to_tweet_id= tweet_id)
             count += 1
 
