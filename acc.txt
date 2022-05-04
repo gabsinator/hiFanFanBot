@@ -1,4 +1,0 @@
-
-#account name: @HiFanFanBot
-#account email: gabsinator43@gmail.com
-#account password: helloFanFan81
