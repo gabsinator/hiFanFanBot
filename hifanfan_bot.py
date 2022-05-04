@@ -58,20 +58,22 @@ def reply():
             tweet = dict(tweet)
             tweet_id = tweet["id"]
 
-            client.create_tweet(text= "hi", in_reply_to_tweet_id= tweet_id)
+            client.create_tweet(text= "hi fanfan", in_reply_to_tweet_id= tweet_id)
             count += 1
 
             store_last(FILE_NAME= FILE_NAME, last_id= tweet_id)
 
         print("replied to {0} tweets".format(count))
+
     except:
         print("nothing to reply to.")
         return
 
-def main():
-    reply()
-    
-    time.sleep(60)
+def run():
+    while True:
+        reply()
+        
+        time.sleep(180)
 
 if __name__ == "__main__":
-    main()
+    run()
