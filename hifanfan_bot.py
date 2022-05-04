@@ -14,8 +14,9 @@ bearer_token = os.getenv("bearer_token")
 exclude_list = ["retweets", "replies"]
 tweet = "Hello World"
 FILE_NAME = "last.txt"
-USER_ID = 735765478845489157 #id for gabsinatorrr
-#1337072139216670723 id for fanfan
+USER_ID = 1337072139216670723 #id for fanfan
+#735765478845489157 #id for gabsinatorrr
+
 
 
 # Authenticate to Twitter
