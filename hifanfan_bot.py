@@ -13,6 +13,8 @@ bearer_token = os.getenv("bearer_token")
 
 last_tweet = int(os.getenv("last_tweet"))
 
+
+
 exclude_list = ["retweets", "replies"]
 tweet = "Hello World"
 FILE_NAME = "last.txt"
@@ -57,6 +59,11 @@ def reply():
     tweets = client.get_users_tweets(id=USER_ID, exclude= exclude_list, since_id= read_last(FILE_NAME= FILE_NAME))
 
     count = 0
+    os.environ["my_var"] = str(111)
+    print(int(os.getenv("my_var")))
+    os.environ["my_var"] = str(222)
+    print(int(os.getenv("my_var")))
+
 
     try:
         for tweet in reversed(tweets.data):
@@ -68,6 +75,10 @@ def reply():
             count += 1
 
             store_last(FILE_NAME= FILE_NAME, last_id= tweet_id)
+
+            
+
+
 
         print("replied to {0} tweets".format(count))
 
