@@ -59,7 +59,7 @@ def reply():
     tweets = client.get_users_tweets(id=USER_ID, exclude= exclude_list, since_id= read_last(FILE_NAME= FILE_NAME))
 
     count = 0
-    os.environ["my_var"] = "1"
+    #os.environ["my_var"] = "1"
     print(int(os.getenv("my_var")))
 
 
