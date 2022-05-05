@@ -16,8 +16,9 @@ last_tweet = int(os.getenv("last_tweet"))
 exclude_list = ["retweets", "replies"]
 tweet = "Hello World"
 FILE_NAME = "last.txt"
-USER_ID = 735765478845489157 #id for gabsinatorrr
-#1337072139216670723 #id for fanfan
+USER_ID = 1337072139216670723 #id for fanfan
+#735765478845489157 #id for gabsinatorrr
+
 
 
 
@@ -53,7 +54,7 @@ def store_last(FILE_NAME, last_id):
     return
 
 def reply():
-    tweets = client.get_users_tweets(id=USER_ID, exclude= exclude_list, since_id= last_tweet)
+    tweets = client.get_users_tweets(id=USER_ID, exclude= exclude_list, since_id= read_last(FILE_NAME= FILE_NAME))
 
     count = 0
 
@@ -66,7 +67,7 @@ def reply():
             client.create_tweet(text= "hi fanfan", in_reply_to_tweet_id= tweet_id)
             count += 1
 
-            os.environ["last_tweet"] = str(tweet_id)
+            store_last(FILE_NAME= FILE_NAME, last_id= tweet_id)
 
         print("replied to {0} tweets".format(count))
 
