@@ -11,6 +11,8 @@ access_token = os.getenv("access_token")
 access_token_secret = os.getenv("access_token_secret")
 bearer_token = os.getenv("bearer_token")
 
+last_tweet = int(os.getenv("last_tweet"))
+
 exclude_list = ["retweets", "replies"]
 tweet = "Hello World"
 FILE_NAME = "last.txt"
@@ -50,7 +52,7 @@ def store_last(FILE_NAME, last_id):
     return
 
 def reply():
-    tweets = client.get_users_tweets(id=USER_ID, exclude= exclude_list, since_id= read_last(FILE_NAME= FILE_NAME))
+    tweets = client.get_users_tweets(id=USER_ID, exclude= exclude_list, since_id= last_tweet)
 
     count = 0
 
@@ -63,7 +65,7 @@ def reply():
             client.create_tweet(text= "hi fanfan", in_reply_to_tweet_id= tweet_id)
             count += 1
 
-            store_last(FILE_NAME= FILE_NAME, last_id= tweet_id)
+            os.environ["last_tweet"] = str(tweet_id)
 
         print("replied to {0} tweets".format(count))
 
